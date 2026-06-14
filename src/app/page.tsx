@@ -185,14 +185,14 @@ Please check availability and price for me.`;
   ))}
 
   <div className="absolute inset-0 bg-black/38" />
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center">
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-2 md:items-center md:py-20">
           <div>
             <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#e63946]">
             
             </p>
-            <h1 className="max-w-xl text-5xl font-black uppercase leading-tight md:text-6xl">
-              Auto Parts Supplier
-            </h1>
+            <h1 className="max-w-xl text-4xl font-black uppercase leading-tight md:text-6xl">
+  Auto Parts Supplier
+</h1>
             <p className="mt-6 max-w-lg text-lg text-gray-300">
               Send your vehicle model, year and part name. We help you check
               availability and quote fast on WhatsApp.
@@ -214,7 +214,7 @@ Please check availability and price for me.`;
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1a1d] to-black p-8 shadow-2xl">
+          <div className="hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1a1d] to-black p-8 shadow-2xl md:block">
             <div className="grid grid-cols-2 gap-4">
 {featuredCategories.map((item) => (
   <a
@@ -242,9 +242,9 @@ Please check availability and price for me.`;
           <p className="text-sm font-bold uppercase text-[#e63946]">
             Shop by Category
           </p>
-          <h2 className="mt-2 text-4xl font-black uppercase">
-            Browse Popular Auto Parts
-          </h2>
+          <h2 className="mt-3 text-3xl font-black uppercase tracking-tight text-[#0d0d0f] md:text-5xl">
+  Browse Popular Auto Parts
+</h2>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
@@ -298,9 +298,9 @@ Please check availability and price for me.`;
         Packing & Delivery
       </p>
 
-      <h2 className="mt-3 text-4xl font-black uppercase tracking-tight md:text-5xl">
-        Safe Packing, Fast Delivery
-      </h2>
+      <h2 className="mt-3 text-3xl font-black uppercase tracking-tight md:text-5xl">
+  Safe Packing, Fast Delivery
+</h2>
 
       <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-[#e63946]" />
 
