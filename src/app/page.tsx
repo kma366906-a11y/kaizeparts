@@ -61,6 +61,7 @@ export default function Home() {
   const [currentHero, setCurrentHero] = useState(0);
   const [currentCategoryPage, setCurrentCategoryPage] = useState(0);
   const [language, setLanguage] = useState("en");
+  const [whatsappOpen, setWhatsappOpen] = useState(false);
 
   const [vehicleModel, setVehicleModel] = useState("");
   const [vehicleYear, setVehicleYear] = useState("");
@@ -72,6 +73,14 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    setWhatsappOpen(true);
+  }, 1500);
+
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
   const timer = setInterval(() => {
@@ -418,6 +427,91 @@ Please check availability and price for me.`;
           </p>
         </div>
       </footer>
+
+{/* WhatsApp Floating Chat */}
+<div className="fixed bottom-6 right-6 z-[999]">
+  {whatsappOpen && (
+    <div className="mb-4 w-[calc(100vw-32px)] max-w-[380px] overflow-hidden rounded-2xl bg-white shadow-2xl">
+      <div className="flex items-start justify-between bg-[#075e54] px-5 py-4 text-white">
+        <div>
+          <h3 className="text-lg font-bold">Kaize Parts</h3>
+          <p className="text-sm text-white/90">
+            Typically replies within minutes
+          </p>
+          <p className="mt-1 text-xs text-white/80">
+            Fast quote by WhatsApp
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setWhatsappOpen(false)}
+          className="text-xl leading-none text-white/80 hover:text-white"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="bg-[#efe7dd] px-5 py-6">
+        <div className="rounded-xl bg-[#dcf8c6] p-4 text-sm leading-7 text-[#35524a] shadow-sm">
+          <p>
+            Kaize Parts supplies used original and aftermarket auto parts.
+          </p>
+
+          <p className="mt-3">
+            Send us your vehicle model, year and part name. We will help check
+            availability and quote fast.
+          </p>
+
+          <p className="mt-3">
+            You can also send photos, VIN or part number after opening
+            WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-white p-4">
+        <button
+          type="button"
+          onClick={() => {
+            const message = `Hello Kaize Parts, I need auto parts.
+
+Vehicle brand/model:
+Vehicle year:
+Part needed:
+
+Please check availability and price for me.`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+              message
+            )}`;
+            window.open(url, "_blank");
+          }}
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25d366] px-5 py-4 font-bold text-white transition hover:bg-[#1ebe5d]"
+        >
+          WhatsApp Us
+        </button>
+      </div>
+    </div>
+  )}
+
+  <button
+    type="button"
+    onClick={() => setWhatsappOpen((prev) => !prev)}
+    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#25d366] text-xl font-black text-white shadow-2xl transition hover:scale-105"
+    aria-label="Open WhatsApp chat"
+  >
+  <svg
+    viewBox="0 0 32 32"
+    className="h-9 w-9"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M16.04 3C9.42 3 4.04 8.38 4.04 15c0 2.34.67 4.53 1.84 6.38L4 29l7.82-1.83A11.9 11.9 0 0 0 16.04 27c6.62 0 12-5.38 12-12s-5.38-12-12-12Zm0 21.8c-1.84 0-3.55-.52-5.01-1.43l-.36-.22-4.15.97.99-4.03-.24-.39A9.72 9.72 0 0 1 6.24 15c0-5.4 4.4-9.8 9.8-9.8s9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8Zm5.4-7.32c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.75-.72 2-1.41.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+  </svg>
+</button>
+</div>
+
     </main>
   );
 }
